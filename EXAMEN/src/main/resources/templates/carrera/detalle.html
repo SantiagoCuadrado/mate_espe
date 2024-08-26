@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle de Carrera</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Detalle de Carrera</h1>
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text"><strong>Carrera ID:</strong> <span th:text="${carrera.id.carreraId}"></span></p>
+            <p class="card-text"><strong>Departamento:</strong> <span th:text="${nombreDepartamento}"></span></p>
+            <p class="card-text"><strong>Nombre de Carrera:</strong> <span th:text="${carrera.nombreCarrera}"></span></p>
+            <p class="card-text"><strong>Número de Nivel:</strong> <span th:text="${carrera.numNivel}"></span></p>
+        </div>
+    </div>
+    <a href="/carreras" class="btn btn-primary mt-3">Volver a la lista</a>
+</div>
+</body>
+</html>

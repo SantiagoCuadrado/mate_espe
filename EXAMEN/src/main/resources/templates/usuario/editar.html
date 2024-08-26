@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Usuario</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Editar Usuario</h1>
+    <form th:action="@{/usuarios/editar}" th:object="${usuario}" method="post">
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="form-group">
+            <label for="user">Usuario:</label>
+            <input type="text" class="form-control" id="user" th:field="*{user}" required />
+        </div>
+
+        <div class="form-group">
+            <label for="pass">Contraseña:</label>
+            <input type="text" class="form-control" id="pass" th:field="*{pass}" required />
+        </div>
+
+        <div class="form-group">
+            <label for="tipoUsuario">Tipo de Usuario:</label>
+            <select id="tipoUsuario" class="form-control" th:field="*{tipo.id}" required>
+                <option th:each="tipo : ${tipos}"
+                        th:value="${tipo.id}"
+                        th:text="${tipo.nombreTipo}"
+                        th:selected="${tipo.id == usuario.tipo.id}">
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="foto">Foto:</label>
+            <input type="text" class="form-control" id="foto" th:field="*{foto}" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a href="/usuarios" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

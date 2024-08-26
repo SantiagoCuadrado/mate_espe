@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Detalle Estudiante</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+  <h1 class="mb-4">Detalle del Estudiante</h1>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Información del Estudiante</h5>
+      <p class="card-text"><strong>ID:</strong> <span th:text="${estudiante.id}"></span></p>
+      <p class="card-text"><strong>Nombre:</strong> <span th:text="${estudiante.nombreEstudiante}"></span></p>
+      <p class="card-text"><strong>Apellido:</strong> <span th:text="${estudiante.apellidoEstudiante}"></span></p>
+      <p class="card-text"><strong>Usuario:</strong> <span th:text="${nombreUsuario}"></span></p>
+      <p class="card-text"><strong>Carrera:</strong> <span th:text="${carrera.nombreCarrera}"></span></p>
+      <a href="/estudiantes" class="btn btn-secondary">Volver a la lista</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

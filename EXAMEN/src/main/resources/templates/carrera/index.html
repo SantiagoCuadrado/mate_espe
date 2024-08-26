@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Carreras</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+        }
+        .navbar {
+            background-color: #1abc9c !important;
+        }
+        .navbar-brand, .nav-link {
+            color: #ecf0f1 !important;
+            text-align: center;
+        }
+        .navbar-nav {
+            margin: auto;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 15px;
+        }
+        h1 {
+            font-weight: 700;
+            color: #ffffff;
+        }
+        table {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        thead {
+            background: rgba(44, 62, 80, 0.8);
+        }
+        .btn-primary {
+            background-color: #3498db;
+            border-color: #2980b9;
+        }
+        .btn-info {
+            background-color: #1abc9c;
+            border-color: #16a085;
+        }
+        .btn-warning {
+            background-color: #f39c12;
+            border-color: #e67e22;
+        }
+        .btn-danger {
+            background-color: #e74c3c;
+            border-color: #c0392b;
+        }
+        .btn-secondary {
+            background-color: #95a5a6;
+            border-color: #7f8c8d;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="#">CATALOGO MATERIAS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+            <!--<li class="nav-item">
+                <a class="nav-link" th:href="@{/}">Inicio</a>
+            </li>-->
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/estudiantes}">Estudiantes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/carreras}">Carreras</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/usuarios}">Usuarios</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h1>Listado de Carreras</h1>
+    <a href="/carreras/agregar" class="btn btn-primary mb-3">Agregar Nueva Carrera</a>
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th>Carrera ID</th>
+            <th>Departamento</th>
+            <th>Nombre de Carrera</th>
+            <th>Número de Nivel</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="carrera : ${carreras}">
+            <td th:text="${carrera.id.carreraId}"></td>
+            <td th:text="${departamentos[carrera.id.departamentoId]}"></td>
+            <td th:text="${carrera.nombreCarrera}"></td>
+            <td th:text="${carrera.numNivel}"></td>
+            <td>
+                <a th:href="@{/carreras/detalle/{carreraId}/{departamentoId}(carreraId=${carrera.id.carreraId}, departamentoId=${carrera.id.departamentoId})}" class="btn btn-info btn-sm">Detalle</a>
+                <a th:href="@{/carreras/editar/{carreraId}/{departamentoId}(carreraId=${carrera.id.carreraId}, departamentoId=${carrera.id.departamentoId})}" class="btn btn-warning btn-sm">Editar</a>
+                <a th:href="@{/carreras/eliminar/{carreraId}/{departamentoId}(carreraId=${carrera.id.carreraId}, departamentoId=${carrera.id.departamentoId})}" onclick="return confirm('¿Estás seguro de que deseas eliminar esta carrera?');" class="btn btn-danger btn-sm">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/" class="btn btn-secondary">Volver al Inicio</a>
+</div>
+</body>
+</html>

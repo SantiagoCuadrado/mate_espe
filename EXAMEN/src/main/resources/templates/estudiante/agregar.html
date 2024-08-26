@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Estudiante</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Agregar Estudiante</h1>
+    <form th:action="@{/estudiantes/agregar}" th:object="${estudiante}" method="post">
+        <div class="form-group">
+            <label for="nombreEstudiante">Nombre:</label>
+            <input type="text" id="nombreEstudiante" th:field="*{nombreEstudiante}" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="apellidoEstudiante">Apellido:</label>
+            <input type="text" id="apellidoEstudiante" th:field="*{apellidoEstudiante}" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="usuarioId">Usuario ID:</label>
+            <input type="number" id="usuarioId" th:field="*{usuarioId}" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="carreraId">Carrera ID:</label>
+            <select id="carreraId" th:field="*{carreraId}" class="form-control" required>
+                <option value="" disabled selected>Selecciona una carrera</option>
+                <option th:each="carrera : ${carreras}" th:value="${carrera.id.carreraId}" th:text="${carrera.id.carreraId}"></option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Agregar</button>
+        <a href="/estudiantes" class="btn btn-secondary">Volver a la lista</a>
+    </form>
+</div>
+</body>
+</html>

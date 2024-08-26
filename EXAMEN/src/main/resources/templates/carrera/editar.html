@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Carrera</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Editar Carrera</h1>
+    <form action="#" th:action="@{/carreras/editar}" th:object="${carrera}" method="post">
+        <input type="hidden" th:field="*{id.carreraId}"/>
+        <input type="hidden" th:field="*{id.departamentoId}"/>
+
+        <div class="form-group">
+            <label for="nombreCarrera">Nombre de Carrera:</label>
+            <input type="text" th:field="*{nombreCarrera}" class="form-control" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="numNivel">Número de Nivel:</label>
+            <input type="number" th:field="*{numNivel}" class="form-control" required/>
+        </div>
+
+        <button type="submit" class="btn btn-success">Guardar Cambios</button>
+        <a href="/carreras" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>

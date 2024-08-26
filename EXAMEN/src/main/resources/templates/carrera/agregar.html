@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Nueva Carrera</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Agregar Nueva Carrera</h1>
+    <form action="#" th:action="@{/carreras/agregar}" th:object="${carrera}" method="post">
+        <div class="form-group">
+            <label for="carreraId">Carrera ID:</label>
+            <input type="number" id="carreraId" class="form-control" th:field="*{id.carreraId}" required/>
+        </div>
+        <div class="form-group">
+            <label for="departamentoId">Departamento ID:</label>
+            <input type="number" id="departamentoId" class="form-control" th:field="*{id.departamentoId}" required/>
+        </div>
+        <div class="form-group">
+            <label for="nombreCarrera">Nombre de Carrera:</label>
+            <input type="text" id="nombreCarrera" class="form-control" th:field="*{nombreCarrera}" required/>
+        </div>
+        <div class="form-group">
+            <label for="numNivel">Número de Nivel:</label>
+            <input type="number" id="numNivel" class="form-control" th:field="*{numNivel}" required/>
+        </div>
+        <button type="submit" class="btn btn-primary">Agregar</button>
+        <a href="/carreras" class="btn btn-secondary ml-2">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>

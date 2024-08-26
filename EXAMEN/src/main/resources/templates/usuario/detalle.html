@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles de Usuario</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Detalles de Usuario</h1>
+    <div class="card">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">ID:</dt>
+                <dd class="col-sm-9" th:text="${usuario.id}"></dd>
+
+                <dt class="col-sm-3">Usuario:</dt>
+                <dd class="col-sm-9" th:text="${usuario.user}"></dd>
+
+                <dt class="col-sm-3">Contraseña:</dt>
+                <dd class="col-sm-9" th:text="${usuario.pass}"></dd>
+
+                <dt class="col-sm-3">Tipo de Usuario:</dt>
+                <dd class="col-sm-9" th:text="${usuario.tipo.nombreTipo}"></dd>
+
+                <dt class="col-sm-3">Foto:</dt>
+                <dd class="col-sm-9">
+                    <img th:src="@{/Imagenes/{foto}(foto=${usuario.foto})}" alt="Foto de Usuario" class="img-fluid" style="max-width: 200px; max-height: 200px; object-fit: cover;"/>
+                </dd>
+            </dl>
+            <a href="/usuarios" class="btn btn-secondary">Volver</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
